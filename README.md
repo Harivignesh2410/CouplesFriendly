@@ -45,6 +45,8 @@ VITE_API_URL=https://couplesfriendly.onrender.com
 
 When running Vite locally without `VITE_API_URL`, the frontend uses the local development API at `http://localhost:5000`.
 
+The API CORS policy allows the production frontend origin `https://couples-friendly.vercel.app` with credentials for REST and SignalR.
+
 ## API
 
 - `POST /api/auth/guest` creates a guest token.

@@ -17,7 +17,12 @@ var allowedOrigins = builder.Configuration
 
 if (allowedOrigins.Length == 0)
 {
-    allowedOrigins = ["http://localhost:5173"];
+    allowedOrigins =
+    [
+        "https://couples-friendly.vercel.app",
+        "http://localhost:5173",
+        "http://127.0.0.1:5173"
+    ];
 }
 
 builder.Services.AddCors(options =>
