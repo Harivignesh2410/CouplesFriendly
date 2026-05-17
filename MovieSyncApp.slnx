@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/server/" />
+  <Folder Name="/server/src/">
+    <Project Path="server/src/MovieSync.Api/MovieSync.Api.csproj" />
+    <Project Path="server/src/MovieSync.Application/MovieSync.Application.csproj" />
+    <Project Path="server/src/MovieSync.Domain/MovieSync.Domain.csproj" />
+    <Project Path="server/src/MovieSync.Infrastructure/MovieSync.Infrastructure.csproj" />
+  </Folder>
+</Solution>
