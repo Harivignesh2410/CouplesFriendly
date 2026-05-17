@@ -5,10 +5,11 @@ EXPOSE 8080
 FROM mcr.microsoft.com/dotnet/sdk:10.0-preview AS build
 WORKDIR /src
 
-COPY ../../ ./
+COPY . .
 
 WORKDIR /src/server/src/MovieSync.Api
 
+RUN dotnet restore "MovieSync.Api.csproj"
 RUN dotnet publish "MovieSync.Api.csproj" -c Release -o /app/publish
 
 FROM base AS final
