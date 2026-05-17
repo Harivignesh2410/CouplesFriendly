@@ -1,11 +1,13 @@
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+FROM mcr.microsoft.com/dotnet/aspnet:10.0-preview AS base
 WORKDIR /app
 EXPOSE 8080
 
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:10.0-preview AS build
 WORKDIR /src
 
-COPY . .
+COPY ../../ ./
+
+WORKDIR /src/server/src/MovieSync.Api
 
 RUN dotnet publish "MovieSync.Api.csproj" -c Release -o /app/publish
 
