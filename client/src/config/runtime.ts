@@ -1,11 +1,24 @@
-const fallbackApiBaseUrl = "http://localhost:5000";
+const localDevelopmentApiUrl = "http://localhost:5000";
 
-function normalizeBaseUrl(value: string | undefined) {
-  const candidate = value?.trim() || fallbackApiBaseUrl;
-  return candidate.replace(/\/+$/, "");
+function normalizeBaseUrl(value: string) {
+  return value.trim().replace(/\/+$/, "");
 }
 
-export const API_BASE_URL = normalizeBaseUrl(import.meta.env.VITE_API_BASE_URL);
+function resolveApiBaseUrl() {
+  const configuredApiUrl = import.meta.env.VITE_API_URL;
+
+  if (configuredApiUrl?.trim()) {
+    return normalizeBaseUrl(configuredApiUrl);
+  }
+
+  if (import.meta.env.DEV) {
+    return localDevelopmentApiUrl;
+  }
+
+  throw new Error("Missing VITE_API_URL. Set it to https://couplesfriendly.onrender.com in the production frontend environment.");
+}
+
+export const API_BASE_URL = resolveApiBaseUrl();
 export const SIGNALR_ROOMS_HUB_URL = `${API_BASE_URL}/hubs/rooms`;
 export const IS_DEVELOPMENT = import.meta.env.DEV;
 

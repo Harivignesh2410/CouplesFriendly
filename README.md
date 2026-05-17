@@ -35,7 +35,15 @@ npm run dev
 
 Open `http://localhost:5173`.
 
-The frontend defaults to `http://localhost:5000` for both REST API calls and the SignalR hub. Override it with `VITE_API_BASE_URL` only if your backend runs on a different HTTP origin.
+The frontend reads `VITE_API_URL` for both REST API calls and the SignalR hub.
+
+For Vercel production, set:
+
+```text
+VITE_API_URL=https://couplesfriendly.onrender.com
+```
+
+When running Vite locally without `VITE_API_URL`, the frontend uses the local development API at `http://localhost:5000`.
 
 ## API
 
